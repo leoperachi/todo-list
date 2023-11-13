@@ -10,6 +10,6 @@ Foi testado utilizando o gerenciador de dependências yarn. Portanto é amplamen
 instalá-lo. E o git também é necessário. Seguem os comandos para instalação
 
 npm install --global yarn
-git clone
+git clone https://github.com/leoperachi/todo-list.git
 yarn install
 yarn start
