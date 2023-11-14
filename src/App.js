@@ -34,13 +34,19 @@ function App() {
     const handleSubmit = event => {
         if(dataForm.id === 0){
             api.post('Tarefas/Salvar', dataForm, {headers: { "Content-Type" : "application/json" }}).then(response => {
-                console.log('entrei');
+                console.log('Salvar');
+                setTimeout(()=> {
+                    window.location.reload(false);
+                }, 100);
             }).catch( err => {
                 event.preventDefault();
             });
         }else{
             api.post('Tarefas/Alterar', dataForm, {headers: { "Content-Type" : "application/json" }}).then(response => {
-                console.log('entrei');
+                console.log('Alterar');
+                setTimeout(()=> {
+                    window.location.reload(false);
+                }, 100)
             }).catch( err => {
                 event.preventDefault();
             });
@@ -175,7 +181,7 @@ function App() {
                         <Modal.Header closeButton={false}>
                             {dataForm.id === 0 ? <Modal.Title>Add Nova Tarefa</Modal.Title> : <Modal.Title>Update Tarefa</Modal.Title>}
                         </Modal.Header>
-                        <Form noValidate onSubmit={handleSubmit}>
+                        <Form>
                             <Modal.Body>
                                 {dataForm.id > 0 &&
                                     <Form.Group className="mb-3">
@@ -200,7 +206,7 @@ function App() {
                                 </Form.Group>
                             </Modal.Body>
                             <Modal.Footer>
-                                <Button variant="primary" type="submit">
+                                <Button variant="primary" onClick={e => handleSubmit(e)}>
                                     Salvar
                                 </Button>
                                 <Button variant="secondary" onClick={handleClose}>
